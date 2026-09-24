@@ -1,0 +1,475 @@
+/* ==========================================================================
+   CURRÍCULUM VITAE - LICOSA SALAZAR (PRINT & FORMAL PDF STYLES)
+   Diseñado específicamente para formato A4 (210mm x 297mm)
+   Control estricto de paginación: EXACTAMENTE 2 PÁGINAS, CERO DESBORDES.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
+:root {
+  --c-navy: #19244e;
+  --c-blue: #253c96;
+  --c-orange: #f36b2e;
+  --c-mango: #f59a1e;
+  --c-ocean: #c4e7e5;
+  --c-ocean-soft: #eef8f8;
+  --text-dark: #19244e;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-color: #cbd5e1;
+  --border-accent: rgba(37, 60, 150, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-body);
+  background-color: #e2e8f0; /* Fondo gris en pantalla para simular hojas de papel */
+  font-size: 8.8pt;
+  line-height: 1.42;
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* Hoja A4 Física */
+.pdf-page {
+  width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  margin: 0 auto 30px auto;
+  padding: 12mm 15mm 10mm 15mm;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+/* Reglas de impresión directa o headless PDF */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+  }
+  .pdf-page {
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    width: 210mm;
+    height: 297mm;
+    min-height: 297mm;
+    max-height: 297mm;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ENCABEZADOS Y TITULARES */
+.header-main {
+  border-bottom: 2px solid var(--c-navy);
+  padding-bottom: 7px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.header-accent-bar {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 90px;
+  height: 3px;
+  background: var(--c-orange);
+}
+
+.candidate-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20pt;
+  font-weight: 800;
+  color: var(--c-navy);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.candidate-headline {
+  font-size: 8.8pt;
+  font-weight: 700;
+  color: var(--c-blue);
+  letter-spacing: 0.04em;
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 8.2pt;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.contact-item svg {
+  color: var(--c-orange);
+}
+
+/* TÍTULOS DE SECCIÓN */
+.section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9.8pt;
+  font-weight: 800;
+  color: var(--c-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+  margin-bottom: 4px;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid var(--c-blue);
+}
+
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background-color: var(--c-orange);
+  border-radius: 2px;
+}
+
+/* PERFIL PROFESIONAL */
+.profile-text {
+  font-size: 8.4pt;
+  line-height: 1.38;
+  color: var(--text-dark);
+  text-align: justify;
+  margin-bottom: 6px;
+}
+
+/* MATRIZ DE COMPETENCIAS CLAVE */
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 7px;
+  font-size: 8.1pt;
+}
+
+.skills-table td {
+  padding: 3.5px 6px;
+  vertical-align: middle;
+  border: 1px solid #e2e8f0;
+}
+
+.skills-table td.skill-label {
+  font-weight: 700;
+  color: var(--c-navy);
+  width: 28%;
+  background-color: var(--c-ocean-soft);
+  border-left: 3px solid var(--c-blue);
+}
+
+.skills-table td.skill-desc {
+  color: var(--text-body);
+  background-color: #ffffff;
+}
+
+/* EXPERIENCIA PROFESIONAL */
+.exp-block {
+  margin-bottom: 6px;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1px;
+}
+
+.exp-company {
+  font-weight: 800;
+  font-size: 9.2pt;
+  color: var(--c-navy);
+}
+
+.exp-period {
+  font-size: 8.2pt;
+  font-weight: 700;
+  color: var(--c-orange);
+}
+
+.exp-role {
+  font-weight: 700;
+  font-size: 8.4pt;
+  color: var(--c-blue);
+  margin-bottom: 2px;
+}
+
+.exp-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.exp-list li {
+  position: relative;
+  padding-left: 11px;
+  font-size: 8.2pt;
+  line-height: 1.35;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.exp-list li::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  color: var(--c-orange);
+  font-size: 8.5pt;
+}
+
+/* PÁGINA 2: HEADER COMPACTO */
+.header-mini {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid var(--c-navy);
+  padding-bottom: 4px;
+  margin-bottom: 7px;
+}
+
+.mini-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11pt;
+  font-weight: 800;
+  color: var(--c-navy);
+  text-transform: uppercase;
+}
+
+.mini-contact {
+  font-size: 7.8pt;
+  font-weight: 600;
+  color: var(--c-blue);
+}
+
+/* RESULTADOS CUANTITATIVOS (KPIs) */
+.disclaimer-small {
+  font-size: 7.4pt;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-bottom: 6px;
+}
+
+.kpi-card {
+  border: 1px solid var(--border-accent);
+  background: #fafcfe;
+  border-radius: 4px;
+  padding: 4px 6px;
+  text-align: center;
+  border-top: 2.5px solid var(--c-orange);
+}
+
+.kpi-card:nth-child(2) {
+  border-top-color: var(--c-blue);
+}
+.kpi-card:nth-child(3) {
+  border-top-color: var(--c-mango);
+}
+.kpi-card:nth-child(4) {
+  border-top-color: var(--c-navy);
+}
+
+.kpi-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5pt;
+  font-weight: 800;
+  color: var(--c-navy);
+  line-height: 1.1;
+}
+
+.kpi-text {
+  font-size: 6.9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--c-blue);
+  margin-top: 1px;
+}
+
+/* SECTOR CAMPAIGNS SUMMARY */
+.campaign-item {
+  font-size: 8.1pt;
+  line-height: 1.34;
+  margin-bottom: 4px;
+}
+
+.campaign-item strong {
+  color: var(--c-navy);
+}
+
+/* SECCIONES EN DOS COLUMNAS PARA LA PÁGINA 2 */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.sub-block {
+  margin-bottom: 5px;
+}
+
+.sub-block-title {
+  font-size: 8.4pt;
+  font-weight: 800;
+  color: var(--c-navy);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.sub-block-content {
+  font-size: 8pt;
+  line-height: 1.34;
+  color: var(--text-dark);
+}
+
+/* FORMACIÓN ACADÉMICA */
+.edu-row {
+  margin-bottom: 3.5px;
+  font-size: 8.1pt;
+  line-height: 1.3;
+}
+
+.edu-row strong {
+  color: var(--c-navy);
+}
+
+.edu-row span {
+  color: var(--c-blue);
+  font-weight: 600;
+}
+
+/* SECTORES Y MERCADOS */
+.market-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7.9pt;
+  margin-bottom: 4px;
+}
+
+.market-table td {
+  padding: 2.5px 5px;
+  border: 1px solid #e2e8f0;
+}
+
+.market-table td:first-child {
+  font-weight: 600;
+  color: var(--c-navy);
+  background-color: var(--c-ocean-soft);
+  width: 50%;
+}
+
+/* IDIOMAS */
+.lang-row {
+  font-size: 8pt;
+  margin-bottom: 3px;
+  color: var(--text-dark);
+}
+
+/* NOTA DE PRIVACIDAD FORMAL */
+.privacy-box {
+  background-color: #f8fafc;
+  border-left: 3px solid var(--c-navy);
+  padding: 4px 7px;
+  font-size: 7.2pt;
+  line-height: 1.32;
+  color: var(--text-muted);
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+/* PIE DE PÁGINA */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #cbd5e1;
+  padding-top: 4px;
+  font-size: 7.3pt;
+  color: var(--text-muted);
+}
+
+.page-footer span.accent {
+  color: var(--c-orange);
+  font-weight: 700;
+}
+
+/* Botón flotante para imprimir directo a PDF */
+.print-control-bar {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--c-navy);
+  padding: 8px 14px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.print-control-bar button, .print-control-bar a {
+  background: var(--c-orange);
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.print-control-bar button:hover, .print-control-bar a:hover {
+  background: var(--c-mango);
+}
